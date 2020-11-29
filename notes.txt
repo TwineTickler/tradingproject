@@ -1,0 +1,38 @@
+regression:
+
+Independant variable: X axis
+Dependant variable: Y axis
+    - outcome?
+    - dependant on the other variable
+
+It seems that X is going to be time. Y would be everything else, price, volume, etc
+
+Might need to use multiple regression because of each of the Y values.
+
+Logistic Regression predicts something either True or False instead of something continuous.
+    - Typically used for classification
+    - Possible someting like:
+        - Price will increase by 100 based on: Price, Volume, Time
+        - Price will not increase by 100 based on: Price, Volume, Time
+    - Need to research *Maximum Likelyhood*
+
+Stepwise Regression might be a better choice
+    - best when we deal with multiple independant variables
+
+Supervised learning (labling your data)
+Unsupervised learning (not sure what you are looking for in your data)
+
+Supervised Learning + Discrete = classification or categorization
+Supervised Learning + Continuous = Regression
+Unsupervised Learning + Discrete = Clustering
+Unsupervised Learning + Continuous = Dimensionality Reduction
+
+Neural Networks:
+    - feed-forward
+    - recurrent
+    - convolutional
+    - modular
+
+
+
+

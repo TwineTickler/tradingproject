@@ -9,15 +9,23 @@ import datetime
 kraken = krakenex.API()
 counter = 0
 # this will set how long the script will run for:
-iterations = 300 # how many times would you like to check the price?
+iterations = 100000000 # how many times would you like to check the price?
+# 100,000,000 one hundered million is about 3 years
 
 while counter < iterations:
     if counter != 0: # if this is not the first time through the loop then wait 3 seconds
         time.sleep(3)
-    currenttime = str(datetime.datetime.utcnow())[11:19]
+    # staticly set the time to a variable so that it doesn't change for any of the time calculations
+    timenow = datetime.datetime.utcnow()
+    currenttime = str(timenow)[11:19]
     currenttime = currenttime.replace(":","_",2) # python is picky about : in variable names so replace with _
+    # get the current weekday
+    year = str(timenow)[0:4]
+    month = str(timenow)[5:7]
+    day = str(timenow)[8:10]
+    weekday = datetime.datetime(int(year),int(month),int(day)).weekday()
     # lets store all the price data in a file, that is named by date
-    currentfilename = "f" + str(datetime.datetime.utcnow())[0:10] + ".py"
+    currentfilename = "f" + str(timenow)[0:10] + ".py"
     currentfilename = currentfilename.replace("-","_",2) # python will not import this file unless it doesn't have - and starts with a letter
     # create the file if it doesn't already exist
     try:
@@ -53,23 +61,23 @@ while counter < iterations:
         # ask1time = currentbook['result']['XXBTZUSD']['asks'][0][2]
         # ask2time = currentbook['result']['XXBTZUSD']['asks'][1][2]
         # ask3time = currentbook['result']['XXBTZUSD']['asks'][2][2]
-        f.write("d" + currenttime + "={'error':'0','currenttime':'" + currenttime + "','bid1':'" + bid1 + "','bid2':'" + bid2 + "','bid3':'" + bid3 + "','bid1vol':'" + bid1volume + "','bid2vol':'" + bid2volume + "','bid3vol':'" + bid3volume + "','ask1':'" + ask1 + "','ask2':'" + ask2 + "','ask3':'" + ask3 + "','ask1vol':'" + ask1volume + "','ask2vol':'" + ask2volume + "','ask3vol':'" + ask3volume + "'}\n")
+        f.write("d" + currenttime + "={'weekday':'" + weekday + "','error':'0','currenttime':'" + currenttime + "','bid1':'" + bid1 + "','bid2':'" + bid2 + "','bid3':'" + bid3 + "','bid1vol':'" + bid1volume + "','bid2vol':'" + bid2volume + "','bid3vol':'" + bid3volume + "','ask1':'" + ask1 + "','ask2':'" + ask2 + "','ask3':'" + ask3 + "','ask1vol':'" + ask1volume + "','ask2vol':'" + ask2volume + "','ask3vol':'" + ask3volume + "'}\n")
         print("time is: " + currenttime)
         print("bid 1 is: " + bid1)
-        print("bid 2 is: " + bid2)
-        print("bid 3 is: " + bid3)
-        print("bid 1 volume is: " + bid1volume)
-        print("bid 2 volume is: " + bid2volume)
-        print("bid 3 volume is: " + bid3volume)
+        # print("bid 2 is: " + bid2)
+        # print("bid 3 is: " + bid3)
+        # print("bid 1 volume is: " + bid1volume)
+        # print("bid 2 volume is: " + bid2volume)
+        # print("bid 3 volume is: " + bid3volume)
         # print('bid 1 time is:' + str(bid1time))
         # print('bid 2 time is:' + str(bid2time))
         # print('bid 3 time is:' + str(bid3time))
         print("ask 1 is: " + ask1)
-        print("ask 2 is: " + ask2)
-        print("ask 3 is: " + ask3)
-        print("ask 1 volume is: " + ask1volume)
-        print("ask 2 volume is: " + ask2volume)
-        print("ask 3 volume is: " + ask3volume)
+        # print("ask 2 is: " + ask2)
+        # print("ask 3 is: " + ask3)
+        # print("ask 1 volume is: " + ask1volume)
+        # print("ask 2 volume is: " + ask2volume)
+        # print("ask 3 volume is: " + ask3volume)
         # print('ask 1 time is:' + str(ask1time))
         # print('ask 2 time is:' + str(ask2time))
         # print('ask 3 time is:' + str(ask3time))
