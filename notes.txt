@@ -1,6 +1,8 @@
 git:
 	- remember credentials on a machine, run the line:
 		git config --global credential.helper store
+	- reset ALL local changes
+		get reset --hard
 
 regression:
 
