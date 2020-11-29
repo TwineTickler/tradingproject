@@ -33,6 +33,8 @@ Neural Networks:
     - convolutional
     - modular
 
+TODO:
+	- make sure I can iterate through each of the dictionaries (and get their dictionary names) of the dics in the file
 
 
 

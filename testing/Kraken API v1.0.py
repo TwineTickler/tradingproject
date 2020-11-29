@@ -1,5 +1,5 @@
 # TODO:
-# 
+# - make sure there is a way to iterate through each of the dictionaries in the file.
 
 import krakenex
 import pprint
