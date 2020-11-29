@@ -25,7 +25,7 @@ while counter < iterations:
     day = str(timenow)[8:10]
     weekday = datetime.datetime(int(year),int(month),int(day)).weekday()
     # lets store all the price data in a file, that is named by date
-    currentfilename = "f" + str(timenow)[0:10] + ".py"
+    currentfilename = "../results/f" + str(timenow)[0:10] + ".py"
     currentfilename = currentfilename.replace("-","_",2) # python will not import this file unless it doesn't have - and starts with a letter
     # create the file if it doesn't already exist
     try:
