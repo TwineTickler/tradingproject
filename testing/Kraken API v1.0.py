@@ -62,7 +62,7 @@ while counter < iterations:
         # ask1time = currentbook['result']['XXBTZUSD']['asks'][0][2]
         # ask2time = currentbook['result']['XXBTZUSD']['asks'][1][2]
         # ask3time = currentbook['result']['XXBTZUSD']['asks'][2][2]
-        f.write("d" + currenttime + "={'weekday':'" + weekday + "','error':'0','currenttime':'" + currenttime + "','bid1':'" + bid1 + "','bid2':'" + bid2 + "','bid3':'" + bid3 + "','bid1vol':'" + bid1volume + "','bid2vol':'" + bid2volume + "','bid3vol':'" + bid3volume + "','ask1':'" + ask1 + "','ask2':'" + ask2 + "','ask3':'" + ask3 + "','ask1vol':'" + ask1volume + "','ask2vol':'" + ask2volume + "','ask3vol':'" + ask3volume + "'}\n")
+        f.write("d" + currenttime + "={'weekday':'" + str(weekday) + "','error':'0','currenttime':'" + currenttime + "','bid1':'" + bid1 + "','bid2':'" + bid2 + "','bid3':'" + bid3 + "','bid1vol':'" + bid1volume + "','bid2vol':'" + bid2volume + "','bid3vol':'" + bid3volume + "','ask1':'" + ask1 + "','ask2':'" + ask2 + "','ask3':'" + ask3 + "','ask1vol':'" + ask1volume + "','ask2vol':'" + ask2volume + "','ask3vol':'" + ask3volume + "'}\n")
         print("time is: " + currenttime)
         print("bid 1 is: " + bid1)
         # print("bid 2 is: " + bid2)
