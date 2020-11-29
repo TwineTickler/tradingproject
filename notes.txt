@@ -1,3 +1,7 @@
+git:
+	- remember credentials on a machine, run the line:
+		git config --global credential.helper store
+
 regression:
 
 Independant variable: X axis
