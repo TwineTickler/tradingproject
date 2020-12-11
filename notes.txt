@@ -33,6 +33,9 @@ Supervised Learning + Continuous = Regression
 Unsupervised Learning + Discrete = Clustering
 Unsupervised Learning + Continuous = Dimensionality Reduction
 
+ARIMA - used for predicting futuristic time-related predictions
+LSTM - (Long Short Term Memory), great for retianing long term memory
+
 Neural Networks:
     - feed-forward
     - recurrent
