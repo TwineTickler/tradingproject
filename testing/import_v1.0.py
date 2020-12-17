@@ -41,6 +41,7 @@ for dic_name in dic_names:
         good_connections += 1
     else:
         bad_connections += 1
+        
 # how can we check how many files are in the results folder and what the names of the files are so we can import them?
 files_to_import = []
 from os import listdir
@@ -55,8 +56,12 @@ for filename in listdir(path):
 new_module.d15_37_37 # how to call the dictionary from the file
 # next we need to name the module with the filename
 
-
-
+# python: tuples help insure that your data won't be changed vs using a list.
+# Tuples are smaller in size but have less functions than a list
+# Tuples are good to use for grouped data, inside of a list
+# Tuples can be used as dictionary keys because of their immutibility where as lists cannot.
+# get list of all the built in functions of an object:
+dir(obname)
 # get current working directory
 os.getcwd()
 
