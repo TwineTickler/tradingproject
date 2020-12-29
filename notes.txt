@@ -4,6 +4,16 @@ git:
 	- reset ALL local changes
 		get reset --hard
 
+python:
+    get current directory
+        import os
+        cwd = os.getcwd()
+    change working directory
+        os.chdir(path)
+    dictionary of all local variables
+        locals()
+
+
 regression:
 
 Independant variable: X axis
@@ -43,7 +53,5 @@ Neural Networks:
     - modular
 
 TODO:
-	- make sure I can iterate through each of the dictionaries (and get their dictionary names) of the dics in the file
-
 
 
