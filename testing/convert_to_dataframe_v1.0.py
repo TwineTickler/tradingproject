@@ -3,6 +3,7 @@
 # takes the imported dictionary and converts the data into a pandas data frame
 #
 
+import inspect
 # import pandas if it doesn't already exist
 all_local_variables = locals()
 yes_no = 0
@@ -13,10 +14,34 @@ for key in all_local_variables:
 if yes_no == 0:
     import pandas as pd
 
-def convert_to_dataframe(dict):
+
+def convert_to_dataframe(all_data):
+    event_names = []
     # iterate through the keys in the dict (aka, file names)
-    for k in dict:
-        print(k)
+    for key in all_data:
+        # print out all the values in the dict (all the modules/files)
+        print(all_data[key])
+        # for each value in the dictionary (module/file), find all the dictionaries (events) and put them in a list called "event_names"
+        # we need to store them as tuples with the name of the file as well,
+        # so then we will have a list of tuples of all the events, and all the file names
+        inspect_results = inspect.getmembers(all_data[key])
+        for x in inspect_results:
+            if str(type(x[1])) == "<class 'dict'>" and x[0] != "__builtins__":
+                event_names.append((key,x[0]))
+    # now we have a list called "event_names" that has ALL of the File names and Event names that correspond to them
+    
+    # we should be able to see one event like this now:
+    # all_data['f2020_09_23.py'].d15_37_37['weekday']
+
+    s = ""
+    s = "all_data['" + event_names[0][0] + "']." + event_names[0][1]
+    eval(s)
+
+
+
+
+
+
 
 
 
@@ -32,3 +57,11 @@ def convert_to_dataframe(dict):
 # 
 #
 #
+# What do we have?
+#
+#   after import we have something like this: z['f2020_09_23.py'].d15_37_37['weekday']
+#
+#       z - Dictionary (all the files in a dict)
+#       f2020_09_23.py - A dictionary Key which is a Module (a file)
+#       d15_37_37 - Dictionary (an Event of time)
+#       weekday - Dictionary Key which is one value in an Event

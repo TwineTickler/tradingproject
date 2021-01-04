@@ -3,6 +3,8 @@
 # converts the imported dictionary and converts the data in to a pandas series
 #
 
+import inspect
+
 # import pandas if it doesn't already exist
 all_local_variables = locals()
 yes_no = 0
@@ -12,6 +14,8 @@ for key in all_local_variables:
         yes_no = 1
 if yes_no == 0:
     import pandas as pd
+
+##########   DONE IMPORTING   ##########
 
 def convert_to_series(dict):
     pass
