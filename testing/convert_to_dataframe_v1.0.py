@@ -32,10 +32,16 @@ def convert_to_dataframe(all_data):
     
     # we should be able to see one event like this now:
     # all_data['f2020_09_23.py'].d15_37_37['weekday']
+    #
+    # s = ""
+    # s = "all_data['" + event_names[0][0] + "']." + event_names[0][1]
+    # eval(s)
+    #
+    # How about we just create a huge dictionary with keys as column names and the convert that into a dataframe?
+    #
 
-    s = ""
-    s = "all_data['" + event_names[0][0] + "']." + event_names[0][1]
-    eval(s)
+    # create new dictionary
+    
 
 
 
