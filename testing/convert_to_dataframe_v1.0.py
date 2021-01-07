@@ -36,12 +36,15 @@ def convert_to_dataframe(all_data):
     # s = ""
     # s = "all_data['" + event_names[0][0] + "']." + event_names[0][1]
     # eval(s)
-    #
-    # How about we just create a huge dictionary with keys as column names and the convert that into a dataframe?
-    #
 
-    # create new dictionary
+    # now lets convert the data into a list of a list so we can import it into a DataFrame easily
+    # the list will look like this:
+    #    all_data_list = [['2020_09_23', 3, '15_37_37', 0 , ...],['2020_09_23', 3, '15_37_40', 0, ...], ...]
+    # then we should be able to create the DF like this:
+    #    df = pd.DataFrame(all_data_list, columns = ['Date', 'WeekDay', 'CurrentTime', ...])
+
     
+
 
 
 
