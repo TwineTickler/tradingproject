@@ -43,9 +43,12 @@ def convert_to_dataframe(all_data):
     # then we should be able to create the DF like this:
     #    df = pd.DataFrame(all_data_list, columns = ['Date', 'WeekDay', 'CurrentTime', ...])
 
-    
+    # loop through the event_names and create a tuple of all the strings to evaluate into variables
+    string_tuple = 
+    for x in event_names:
 
 
+    return result
 
 
 
