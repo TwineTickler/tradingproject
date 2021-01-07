@@ -1,0 +1,12 @@
+how to use this app:
+    1. make sure all your results are in a folder one dir down from your working dir
+        ex. tradingproject/testing/ is your working folder, this is where your import file is.
+            results should be in a folder here tradingproject/results/
+
+    2. open a python terminal
+        a. run this: run import_v2.py
+        b. run this: z = import_results('PATH TO RESULTS DIR')
+        c. run this: run convert_to_dataframe_v2.py
+        d. run this: event_names = convert_to_dataframe(z)
+
+
