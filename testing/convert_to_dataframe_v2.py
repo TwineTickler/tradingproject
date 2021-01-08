@@ -47,20 +47,21 @@ def convert_to_dataframe(all_data):
     # in other words, a list of each event
     all_data_list = []
     c = 0 # counter for troubleshooting:
+    last_good_time = "" # keep record of the last good time stamp in the loop for errors
     for x in event_names:
         c = c+1
         s = "all_data['" + x[0] + "']." + x[1] # string of a dictionary event
         d = eval(s)
         if int(d['error']) == 1: # if there is an error, write a different entry
-            # need to get the time stamp of the LAST GOOD time stamp before the error occured
-           all_data_list.append([str(x[0][1:11]), -1, -1, d['error'], -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1])
+            all_data_list.append([str(x[0][1:11]), -1, -1, d['error'], last_good_time, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1])
         else:
-           all_data_list.append([str(x[0][1:11]), d['weekday'], d['currenttime'], d['error'], d['bid1'], d['bid2'], d['bid3'], d['bid1vol'], d['bid2vol'], d['bid3vol'], d['ask1'], d['ask2'], d['ask3'], d['ask1vol'], d['ask2vol'], d['ask3vol']])
+            last_good_time = d['currenttime']
+            all_data_list.append([str(x[0][1:11]), d['weekday'], d['currenttime'], d['error'], "none", d['bid1'], d['bid2'], d['bid3'], d['bid1vol'], d['bid2vol'], d['bid3vol'], d['ask1'], d['ask2'], d['ask3'], d['ask1vol'], d['ask2vol'], d['ask3vol']])
     
-    # print(eval(string_list[0])) ------- this shows us one dictionary event
-    
+    # create the data frame from all_data_list
+    df = pd.DataFrame(all_data_list, columns = ['Date', 'Weekday', 'Time', 'Error', 'ErrorInfo', 'bid1', 'bid2', 'bid3', 'bid1v', 'bid2v', 'bid3v', 'ask1', 'ask2', 'ask3', 'ask1v', 'ask2v', 'ask3v'])
 
-    return all_data_list
+    return df
 
 
 
@@ -73,11 +74,11 @@ def convert_to_dataframe(all_data):
 #
 #
 #
-# ID  DATE        WeekDay  CurrentTime  Error  ErrorID bid1  bid2  bid3  bid1v  bid2v  bid3v  ask1  ask2  ask3  ask1v  ask2v  ask3v 
-# 0   2020_09_23  3        15_37_37     0      0       ...   ...   ...   ...    ...    ...    ...   ...   ...   ...    ...    ...
-# 1   2020_09_23  3        15_37_40     0      0       ...   ...   ...   ...    ...    ...    ...   ...   ...   ...    ...    ...
-# 2   2020_09_23  3        15_37_43     0      0       ...   ...   ...   ...    ...    ...    ...   ...   ...   ...    ...    ...
-# 3   ...         ...      ...          ...    ...     ...   ...   ...   ...    ...    ...    ...   ...   ...   ...    ...    ... 
+# ID  DATE        WeekDay  Time         Error  ErrorInfo bid1  bid2  bid3  bid1v  bid2v  bid3v  ask1  ask2  ask3  ask1v  ask2v  ask3v 
+# 0   2020_09_23  3        15_37_37     0      0         ...   ...   ...   ...    ...    ...    ...   ...   ...   ...    ...    ...
+# 1   2020_09_23  3        15_37_40     0      0         ...   ...   ...   ...    ...    ...    ...   ...   ...   ...    ...    ...
+# 2   2020_09_23  3        15_37_43     0      0         ...   ...   ...   ...    ...    ...    ...   ...   ...   ...    ...    ...
+# 3   ...         ...      ...          ...    ...       ...   ...   ...   ...    ...    ...    ...   ...   ...   ...    ...    ... 
 # 
 #
 #

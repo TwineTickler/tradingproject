@@ -13,6 +13,11 @@ python:
     dictionary of all local variables
         locals()
 
+pandas:
+    df.dtypes
+    df.describe()
+    df.head()
+    df.tail()
 
 regression:
 
