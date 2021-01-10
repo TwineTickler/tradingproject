@@ -24,7 +24,7 @@ def import_results(folder_path = "/users/sean/kraken_api_project/tradingproject/
     for filename in listdir(folder_path):
         if filename.startswith('f20'):
             # file_names.append(filename) # store all the file names in a list (or just import them) (not needed)
-            print("Attempting to import " + filename + "...")
+            print("Attempting to import " + filename + "...", end='') # end='' should print without a new line
             try: # try to import the files
                 results[filename] = __import__(filename[0:11])
                 print("...success")

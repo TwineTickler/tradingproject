@@ -52,11 +52,13 @@ def convert_to_dataframe(all_data):
         c = c+1
         s = "all_data['" + x[0] + "']." + x[1] # string of a dictionary event
         d = eval(s)
+        current_date = str(x[0][1:11])
+        current_date = int((current_date[0:4] + current_date[5:7] + current_date[8:]))
         if int(d['error']) == 1: # if there is an error, write a different entry
-            all_data_list.append([str(x[0][1:11]), -1, -1, d['error'], last_good_time, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1])
+            all_data_list.append([current_date, -1, -1, int(d['error']), last_good_time, float(-1), float(-1), float(-1), float(-1), float(-1), float(-1), float(-1), float(-1), float(-1), float(-1), float(-1), float(-1)])
         else:
-            last_good_time = d['currenttime']
-            all_data_list.append([str(x[0][1:11]), d['weekday'], d['currenttime'], d['error'], "none", d['bid1'], d['bid2'], d['bid3'], d['bid1vol'], d['bid2vol'], d['bid3vol'], d['ask1'], d['ask2'], d['ask3'], d['ask1vol'], d['ask2vol'], d['ask3vol']])
+            last_good_time = int((d['currenttime'][0:2] + d['currenttime'][3:5] + d['currenttime'][6:]))
+            all_data_list.append([current_date, int(d['weekday']), last_good_time, int(d['error']), 0, float(d['bid1']), float(d['bid2']), float(d['bid3']), float(d['bid1vol']), float(d['bid2vol']), float(d['bid3vol']), float(d['ask1']), float(d['ask2']), float(d['ask3']), float(d['ask1vol']), float(d['ask2vol']), float(d['ask3vol'])])
     
     # create the data frame from all_data_list
     df = pd.DataFrame(all_data_list, columns = ['Date', 'Weekday', 'Time', 'Error', 'ErrorInfo', 'bid1', 'bid2', 'bid3', 'bid1v', 'bid2v', 'bid3v', 'ask1', 'ask2', 'ask3', 'ask1v', 'ask2v', 'ask3v'])

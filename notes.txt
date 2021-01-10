@@ -18,6 +18,8 @@ pandas:
     df.describe()
     df.head()
     df.tail()
+    df.loc[df['Error'] == 1] (view all errors in a dataframe)
+
 
 regression:
 

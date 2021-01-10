@@ -5,7 +5,7 @@ how to use this app:
 
     2. open a python terminal
         a. run this: run import_v2.py
-        b. run this: z = import_results('PATH TO RESULTS DIR')
+        b. run this: z = import_results('FULL PATH TO RESULTS DIR')
         c. run this: run convert_to_dataframe_v2.py
         d. run this: event_names = convert_to_dataframe(z)
 
