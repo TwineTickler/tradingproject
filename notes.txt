@@ -18,8 +18,38 @@ pandas:
     df.describe()
     df.head()
     df.tail()
-    df.loc[df['Error'] == 1] (view all errors in a dataframe)
+    df.columns
+    df.loc[df['Error'] == 1] # view all errors in a dataframe
+    df['column'].unique()
+    df.sort_values(by="Datetime", ascending=True) # sort by datetime
+    new_df = df[df["Error"] == False] # new df without any errors
+    df.shape
 
+matplotlib:
+    from matplotlib import pyplot as plt
+    from matplotlib import dates as mpl_dates
+    from pandas.plotting import register_matplotlib_converters
+    register_matplotlib_converters()
+    plt.plot_date(x, y)
+    plt.plot(x, y, 'xx') # xx is the style of the line (b- would be blue line, ro is red circles, etc)
+    plt.ylabel('y label')
+    plt.xlabel('x label')
+    plt.axis([0, 6, 0, 20]) # set your axis here with a list [x-low, x-high, y-low, y-high]
+    plt.show()
+
+useful imports:
+import numpy
+import matplotlib.pyplot as plt
+import pandas
+import math
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import LSTM
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import mean_squared_error
+
+Keras:
+    conda install keras
 
 regression:
 

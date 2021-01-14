@@ -1,12 +1,24 @@
 how to use this app:
-    1. make sure all your results are in a folder one dir down from your working dir
-        ex. tradingproject/testing/ is your working folder, this is where your import file is.
-            results should be in a folder here tradingproject/results/
+    1. make note of the folder path to where your results are kept
 
     2. open a python terminal
-        a. run this: run import_v2.py
-        b. run this: z = import_results('FULL PATH TO RESULTS DIR')
+        a. create a variable with the string as the folder path to your local results
+            1. ex: datapath = '/users/sean/krakenproject/tradingproject/results'
+        b. run this: run import_v2.py
         c. run this: run convert_to_dataframe_v2.py
-        d. run this: event_names = convert_to_dataframe(z)
+        d. run this: rawdata = import_results(datapath)
+        e. run this: df = convert_to_dataframe(rawdata)
 
+import stuff:
+import numpy
+import matplotlib.pyplot as plt
+import pandas
+import math
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import LSTM
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import mean_squared_error
 
+set your random seed:
+numpy.random.seed(7)
