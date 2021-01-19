@@ -24,6 +24,15 @@ pandas:
     df.sort_values(by="Datetime", ascending=True) # sort by datetime
     new_df = df[df["Error"] == False] # new df without any errors
     df.shape
+    df.drop(columns=['col1', 'col2', 'etc...'])
+    df[['col1', 'col2', 'etc...']] # will only return these columns 
+
+numpy:
+    numpy array:
+        array.shape
+        array.dtype
+        array.strides
+        array.data # the memory address
 
 matplotlib:
     from matplotlib import pyplot as plt
