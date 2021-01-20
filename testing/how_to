@@ -5,30 +5,18 @@ how to use this app:
         a. create a variable with the string as the folder path to your local results
             1. ex: datapath = '/users/sean/krakenproject/tradingproject/results'
         b. run this: run import_v2.py
-        c. run this: run convert_to_dataframe_v2.py
+        c. run this: run convert_to_dataframe_v2_2.py
         d. run this: rawdata = import_results(datapath)
         e. run this: df = convert_to_dataframe(rawdata)
-
-import stuff:
-import numpy
-import matplotlib.pyplot as plt
-import pandas
-import math
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.layers import LSTM
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics import mean_squared_error
-
-set your random seed:
-numpy.random.seed(7)
+        d. run this: run imports.py
+        f. run this: run prepare_data.py
 
 for the sake of current simplicity and concept building, and so I can follow along with this tutorial,
 let's get rid of all the data except for:
     GOOD (successful) reads of bid1 and the time stamp.
 
-drop all other columns
-df = df[['Datetime', 'bid1']]
+                drop all other columns (no longer needed)
+                df = df[['Datetime', 'bid1']]
 
 I believe the tutorial is just using one column to run the data on, so that's what we will do..
 We are assuming there are not many errors in the time stamps. Each entry is roughly 3 seconds apart from each other.
@@ -40,49 +28,12 @@ plt.plot(df)
 
 use df.describe() to make sure there are no weird min and max values
 
-move the data into a numpy array:
-dataset = df.values
-
-convert it to float if it's not already:
-dataset = dataset.astype('float32')
-
-normalize the dataset
-scaler = MinMaxScaler(feature_range=(0, 1))
-dataset = scaler.fit_transform(dataset)
-
-spit the data in to train and test data sets. This will use the Index to keep everything in time properly
-train_size = int(len(dataset) * 0.67)
-test_size = len(dataset) - train_size
-train, test = dataset[0:train_size,:], dataset[train_size:len(dataset),:]
-print(len(train), len(test))
-
-convert an array of values into a dataset matrix
-This should give us something like:
-    look_back will be the number of time events to use to predict the next time event (default 1)
-    x will be the price at a given event (t) and Y will be the price at the next event (t + 1)
-    (later we might want to change this to say.. 60? I don't know)
-
-def create_dataset(dataset, look_back=1):
-    dataX, dataY = [], []
-    for i in range(len(dataset)-look_back-1):
-        a = dataset[i:(i+look_back), 0]
-        dataX.append(a)
-        dataY.append(dataset[i + look_back, 0])
-    return numpy.array(dataX), numpy.array(dataY)
-
-#reshape into X=t and Y=t+1
 look_back = 1
-trainX, trainY = create_dataset(train, look_back)
-testX, testY = create_dataset(test, look_back)
 
-The LSTM expects the input data to be a specific array structure in the form of: 
-    [samples, time steps, features]
-    currently we have: [samples, features]
-    I think what we have to do is just add a increment value for the "time steps" part of the array
+run this: trainX, trainY, testX, testY = prepare_data(df, look_back)
 
-#reshape input to be [samples, time steps, features]
-trainX = numpy.reshape(trainX, (trainX.shape[0], 1, trainX.shape[1]))
-testX = numpy.reshape(testX, (testX.shape[0], 1, testX.shape[1]))
+                convert it to float if it's not already:
+                dataset = dataset.astype('float32')
 
 # create and fit the LSTM network
 model = Sequential()
