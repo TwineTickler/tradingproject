@@ -101,3 +101,5 @@ Neural Networks:
 TODO:
 
 
+CPU info:
+    X5670 - Intel Xeon
