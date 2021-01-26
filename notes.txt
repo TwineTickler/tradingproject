@@ -103,3 +103,7 @@ TODO:
 
 CPU info:
     X5670 - Intel Xeon
+
+New tutorial to use:
+    https://towardsdatascience.com/3-steps-to-forecast-time-series-lstm-with-tensorflow-keras-ba88c6f05237
+    

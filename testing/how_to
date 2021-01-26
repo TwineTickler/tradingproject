@@ -11,6 +11,11 @@ how to use this app:
         d. run this: run imports.py
         f. run this: run prepare_data.py
 
+        g. run load_functions.py
+        h. rawdatapath = '/users/sean/kraken_api_project/tradingproject/results'
+        i. rawdata = import_results(rawdatapath)
+        j. df = convert_to_dataframe(rawdata)
+
 for the sake of current simplicity and concept building, and so I can follow along with this tutorial,
 let's get rid of all the data except for:
     GOOD (successful) reads of bid1 and the time stamp.
@@ -21,16 +26,16 @@ let's get rid of all the data except for:
 I believe the tutorial is just using one column to run the data on, so that's what we will do..
 We are assuming there are not many errors in the time stamps. Each entry is roughly 3 seconds apart from each other.
 We just have to make sure they are in order (which they should already be)
-df = df['bid1']
+            df = df['bid1']
 
 check it on on a graph to make sure it looks ok and there are no outlyers
-plt.plot(df)
+            plt.plot(df)
 
-use df.describe() to make sure there are no weird min and max values
+            use df.describe() to make sure there are no weird min and max values
 
 look_back = 1
 
-run this: trainX, trainY, testX, testY = prepare_data(df, look_back)
+run this: trainX, trainY, testX, testY, scaler = prepare_data(df, look_back)
 
                 convert it to float if it's not already:
                 dataset = dataset.astype('float32')
